@@ -62,7 +62,7 @@ const tickets = [
     title: "Department Table",
     price: "$450",
     description:
-      "Reserved 10-seat table package for Ontario Tech staff and departments.",
+      "Reserved 10-seat table package for Ontario Tech staff and departments & external company guests.",
   },
 ];
 
@@ -74,15 +74,15 @@ const timeline = [
     icon: Camera,
   },
   {
-    time: "7:15 PM",
+    time: "7:30 PM",
     title: "Seating & Welcome",
     text: "Hosts open the evening and transition into the formal gala experience.",
     icon: Sparkles,
   },
   {
-    time: "7:30 PM",
-    title: "Seated Dinner",
-    text: "An elegant dinner service with Monte Carlo-inspired atmosphere and styling.",
+    time: "7:45 PM",
+    title: "Buffet Dinner",
+    text: "An elegant buffet with Monte Carlo-inspired atmosphere and styling.",
     icon: UtensilsCrossed,
   },
   {
@@ -123,7 +123,7 @@ const highlights = [
     text: "Signature mocktails, arrival photos, luxe lobby styling, and a polished welcome experience.",
   },
   {
-    title: "Seated Gala Dinner",
+    title: "Buffet Gala Dinner",
     text: "A fully dressed main hall with formal dining, elegant décor, and dramatic lighting.",
   },
   {
@@ -139,7 +139,7 @@ const highlights = [
 const faqs = [
   {
     q: "What is the dress code?",
-    a: "Formal black tie attire. Bow ties are encouraged, and guests are invited to dress to impress.",
+    a: "Formal black tie attire with a subtle Monte Carlo influence. Bow ties are encouraged, and guests are invited to dress to impress.",
   },
   {
     q: "Where is the event?",
@@ -159,7 +159,7 @@ const faqs = [
   },
   {
     q: "Will there be food?",
-    a: "Yes. Guests will enjoy a seated dinner, signature drinks, and a late-night snack service.",
+    a: "Yes. Guests will enjoy a buffet dinner, signature drinks, and a late-night snack service.",
   },
 ];
 
@@ -172,7 +172,7 @@ const gallery = [
   "Dance floor finale and after-dark energy",
 ];
 
-function SectionHeading({ eyebrow, title, text }: { eyebrow: string; title: string; text?: string }) {
+function SectionHeading({ eyebrow, title, text }: { eyebrow: string; title: React.ReactNode; text?: string }) {
   return (
     <motion.div
       variants={fadeUp}
@@ -348,7 +348,7 @@ export default function MidnightInMonteCarloSite() {
             <p className="text-[10px] uppercase tracking-[0.4em] text-amber-200/70">BITSoc × SciCo</p>
             <p className="mt-1 text-sm font-medium text-white">Midnight in Monte Carlo</p>
           </div>
-          <nav className="hidden items-center gap-6 text-sm text-neutral-300 lg:flex">
+          <nav className="hidden items-center gap-6 text-md text-neutral-300 lg:flex">
             <a href="#about" className="transition hover:text-amber-200">About</a>
             <a href="#tickets" className="transition hover:text-amber-200">Tickets</a>
             <a href="#program" className="transition hover:text-amber-200">Program</a>
@@ -356,7 +356,7 @@ export default function MidnightInMonteCarloSite() {
             <a href="#extra-pages" className="transition hover:text-amber-200">More</a>
             <a href="#faq" className="transition hover:text-amber-200">FAQ</a>
           </nav>
-          <Button asChild className="rounded-2xl bg-amber-300 px-5 text-black hover:bg-amber-200">
+          <Button asChild className="rounded-3xl bg-amber-300 px-5 text-black hover:bg-amber-200">
             <a href="https://shop.otubitsoc.com">Buy Tickets</a>
           </Button>
         </div>
@@ -365,22 +365,17 @@ export default function MidnightInMonteCarloSite() {
       <main>
         <section className="relative overflow-hidden">
           <div className="mx-auto max-w-7xl px-6 py-20 md:px-10 md:py-28">
-            <motion.div variants={stagger} initial="hidden" animate="visible" className="grid items-center gap-12 lg:grid-cols-[1.15fr_0.85fr]">
-              <motion.div variants={fadeUp} transition={{ duration: 0.55 }}>
-                <div className="mb-6 flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.38em] text-amber-200/75">
-                  <span>BITSoc × SciCo Present</span>
-                  <span className="h-px w-10 bg-amber-300/40" />
-                  <span>A Bow Tie Affair</span>
-                </div>
+            <motion.div variants={stagger} initial="hidden" animate="visible" className="mx-auto max-w-5xl">
+              <motion.div variants={fadeUp} transition={{ duration: 0.55 }} className="text-center">
                 <p className="text-xl font-light italic text-amber-100/90 md:text-2xl">Ontario Tech’s Luxury End-of-Year Gala</p>
                 <h1 className="mt-4 bg-gradient-to-b from-white via-amber-100 to-amber-400 bg-clip-text text-6xl font-semibold leading-none text-transparent md:text-8xl">
                   Midnight in Monte Carlo
                 </h1>
-                <p className="mt-8 max-w-2xl text-base leading-8 text-neutral-300 md:text-lg">
-                  A cinematic gala experience inspired by Riviera glamour — featuring a fully styled dinner, awards,
+                <p className="mx-auto mt-8 max-w-3xl text-base leading-8 text-neutral-300 md:text-lg">
+                  A cinematic gala experience inspired by Riviera glamour, presented by the Buisness & IT Society & Science Council, featuring a styled buffet dinner, awards,
                   signature drinks, photo moments, entertainment, and a polished after-dark finale.
                 </p>
-                <div className="mt-10 flex flex-wrap gap-4">
+                <div className="mt-10 flex flex-wrap justify-center gap-4">
                   <Button asChild className="rounded-2xl bg-amber-300 px-6 py-6 text-sm uppercase tracking-[0.24em] text-black hover:bg-amber-200">
                     <a href="https://shop.otubitsoc.com">Buy Tickets</a>
                   </Button>
@@ -388,7 +383,7 @@ export default function MidnightInMonteCarloSite() {
                     <a href="#program">View Program</a>
                   </Button>
                 </div>
-                <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} className="mt-12 grid gap-4 sm:grid-cols-3">
+                <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} className="mt-12 grid gap-5 text-left sm:grid-cols-3">
                   {[
                     { icon: CalendarDays, label: "Date", value: "April 25, 2026" },
                     { icon: Clock3, label: "Time", value: "Doors 6:00 PM · Ends 1:00 AM" },
@@ -399,35 +394,6 @@ export default function MidnightInMonteCarloSite() {
                     </motion.div>
                   ))}
                 </motion.div>
-              </motion.div>
-
-              <motion.div variants={fadeUp} transition={{ duration: 0.65, ease: "easeOut" }} className="relative">
-                <div className="absolute -inset-6 rounded-[2rem] bg-gradient-to-br from-amber-300/15 via-transparent to-white/5 blur-3xl" />
-                <div className="relative rounded-[2rem] border border-white/10 bg-white/5 p-5 shadow-2xl backdrop-blur-xl">
-                  <div className="aspect-[4/5] rounded-[1.5rem] border border-white/10 bg-[linear-gradient(180deg,#0b0b0b_0%,#111111_35%,#050505_100%)] p-6">
-                    <div className="flex h-full flex-col justify-between rounded-[1.25rem] border border-amber-300/20 bg-[radial-gradient(circle_at_top,_rgba(212,175,55,0.18),_transparent_30%)] p-6">
-                      <div>
-                        <div className="flex items-center justify-between text-[10px] uppercase tracking-[0.35em] text-amber-200/70">
-                          <span>BITSoc</span>
-                          <span>SciCo</span>
-                        </div>
-                        <div className="mt-8 h-px w-full bg-gradient-to-r from-transparent via-amber-300/50 to-transparent" />
-                      </div>
-                      <div>
-                        <p className="text-xl italic text-amber-100">A Bow Tie Affair</p>
-                        <p className="mt-3 text-5xl font-semibold leading-none text-amber-300 md:text-6xl">Midnight</p>
-                        <p className="mt-1 text-4xl font-light text-white md:text-5xl">in Monte Carlo</p>
-                        <p className="mt-8 max-w-sm text-sm leading-7 text-neutral-300">
-                          Dress to impress for a luxe Monte Carlo evening of dining, awards, entertainment, and unforgettable atmosphere.
-                        </p>
-                      </div>
-                      <div className="flex items-end justify-between text-[10px] uppercase tracking-[0.28em] text-amber-100/70">
-                        <span>OTU Gala 2026</span>
-                        <span>shop.otubitsoc.com</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
               </motion.div>
             </motion.div>
 
@@ -443,9 +409,9 @@ export default function MidnightInMonteCarloSite() {
         <section className="mx-auto max-w-7xl px-6 py-10 md:px-10">
           <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.25 }} className="grid gap-6 md:grid-cols-4">
             {[
-              ["350+", "Expected Guests"],
-              ["5", "Ticket Options"],
-              ["1", "Luxury Theme"],
+              ["350+", "Guests"],
+              ["20+", "Awards"],
+              ["2", "Societies"],
               ["∞", "Photo Moments"],
             ].map(([num, label]) => (
               <motion.div key={label} variants={fadeUp} transition={{ duration: 0.45 }}>
@@ -462,7 +428,19 @@ export default function MidnightInMonteCarloSite() {
 
         <section id="about" className="mx-auto max-w-7xl px-6 py-20 md:px-10">
           <div className="grid gap-12 lg:grid-cols-2">
-            <SectionHeading eyebrow="About the Event" title="A gala experience designed to feel cinematic, polished, and memorable." text="Midnight in Monte Carlo is the collaborative annual gala hosted by BITSoc and SciCo. Inspired by Riviera elegance, the evening transforms a traditional student formal into a premium experience with a dramatic dinner room, awards program, photo installations, signature drinks, and a full social finale." />
+            <SectionHeading
+              eyebrow="About the Event"
+              title={
+                <>
+                  More than just a gala. It's a{" "}
+                  <span className="bg-gradient-to-b from-amber-100 via-amber-200 to-amber-400 bg-clip-text text-transparent">
+                    cinematic
+                  </span>{" "}
+                  experience.
+                </>
+              }
+              text="A night designed to celebrate ambition, community, and achievement. Bringing together students, alumni, and leaders from both societies for an unforgettable evening of elegance, recognition, and energy."
+            />
             <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} className="grid gap-4 sm:grid-cols-2">
               {highlights.map((item) => (
                 <motion.div key={item.title} variants={fadeUp} transition={{ duration: 0.45 }}>
@@ -488,11 +466,11 @@ export default function MidnightInMonteCarloSite() {
               {tickets.map((ticket) => (
                 <motion.div key={ticket.title} variants={fadeUp} transition={{ duration: 0.45 }}>
                   <Card className="group h-full rounded-[2rem] border-white/10 bg-black/40 text-white transition hover:-translate-y-1 hover:border-amber-300/30 hover:bg-black/60">
-                    <CardContent className="p-6">
+                    <CardContent className="flex h-full flex-col p-6">
                       <p className="text-[10px] uppercase tracking-[0.35em] text-amber-200/70">Midnight in Monte Carlo</p>
                       <h3 className="mt-4 text-2xl font-medium">{ticket.title}</h3>
                       <p className="mt-5 text-5xl font-semibold text-amber-300">{ticket.price}</p>
-                      <p className="mt-5 text-sm leading-7 text-neutral-300">{ticket.description}</p>
+                      <p className="mt-5 flex-1 text-sm leading-7 text-neutral-300">{ticket.description}</p>
                       <Button asChild className="mt-8 rounded-2xl bg-amber-300 text-black hover:bg-amber-200">
                         <a href="https://shop.otubitsoc.com">Buy Ticket</a>
                       </Button>
