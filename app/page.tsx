@@ -116,6 +116,10 @@ const faqs = [
     q: "Is there parking available?",
     a: "Yes. Parking is available at the Durham Convention Centre free of charge.",
   },
+  {
+    q: "Are there any exams on the day of April 25th?",
+    a: "April 25 falls within the exam period; however, no exams are currently scheduled, as it is designated as an emergency backup day. In the unlikely event that a ticket holder has an exam scheduled during the gala, they may be eligible for a refund. ",
+  },
 ];
 
 const gallery = [
