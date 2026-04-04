@@ -7,10 +7,8 @@ import {
   CalendarDays,
   Clock3,
   MapPin,
-  Award,
   ChevronDown,
   Star,
-  Users,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -40,13 +38,13 @@ const tickets = [
     title: "General Student",
     price: "$50",
     description:
-      "For Ontario Tech students from all other faculties.",
+      "For undergraduate and graduate students from all other faculties at Ontario Tech.",
   },
   {
     title: "Alumni",
     price: "$55",
     description:
-      "For Ontario Tech alumni attending the gala.",
+      "For all Ontario Tech alumni attending the gala.",
   },
   {
     title: "External Guest",
@@ -88,7 +86,7 @@ const highlights = [
 const faqs = [
   {
     q: "What is the dress code?",
-    a: "Formal black tie attire with a subtle Monte Carlo influence. Bow ties are encouraged, and guests are invited to dress to impress.",
+    a: "Formal black tie attire with a subtle Monte Carlo influence. Bow ties are encouraged, and guests are invited to dress to impress. Think colours like black, white, gold, silver, red.",
   },
   {
     q: "Where is the event?",
@@ -164,14 +162,12 @@ function AwardsVotingPage() {
       title: "FBIT Awards",
       text: "Cast your vote for the Professor & TA of the Year in FBIT who showed outstanding leadership, initiative, and impact this year.",
       button: "Vote for FBIT Awards",
-      href: "#",
       accent: "from-amber-300/20 via-amber-100/5 to-transparent",
     },
     {
       title: "Science Awards",
       text: "Recognize Science students for scholarships who made a meaningful contribution through excellence, dedication, and community involvement, along with the professor of the year.",
       button: "Vote for Science Awards",
-      href: "#",
       accent: "from-sky-300/20 via-sky-100/5 to-transparent",
     },
   ];
@@ -196,8 +192,8 @@ function AwardsVotingPage() {
         className="mt-12 grid gap-6 lg:grid-cols-2"
       >
         {awardCards.map((card) => (
-          <motion.div key={card.title} variants={fadeUp} transition={{ duration: 0.45 }}>
-            <Card className="overflow-hidden rounded-[2rem] border-white/10 bg-black/40 text-white">
+          <motion.div key={card.title} variants={fadeUp} transition={{ duration: 0.45 }} className="h-full">
+            <Card className="flex h-full flex-col overflow-hidden rounded-[2rem] border-white/10 bg-black/40 text-white">
               <div className={`relative aspect-[16/10] border-b border-white/10 bg-gradient-to-br ${card.accent}`}>
                 <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.02),rgba(0,0,0,0.35))]" />
                 <div className="absolute inset-0 flex items-end p-6">
@@ -207,10 +203,14 @@ function AwardsVotingPage() {
                   </div>
                 </div>
               </div>
-              <CardContent className="p-6">
-                <p className="text-sm leading-7 text-neutral-300">{card.text}</p>
-                <Button asChild className="mt-6 rounded-2xl bg-amber-300 text-black hover:bg-amber-200">
-                  <a href={card.href}>{card.button}</a>
+              <CardContent className="flex flex-1 flex-col p-6">
+                <p className="flex-1 text-sm leading-7 text-neutral-300">{card.text}</p>
+                <Button
+                  disabled
+                  className="mt-6 cursor-not-allowed rounded-2xl bg-amber-300 text-black opacity-60 hover:bg-amber-300"
+                  title="Voting forms are not live yet"
+                >
+                  {card.button}
                 </Button>
               </CardContent>
             </Card>
@@ -271,7 +271,7 @@ function PresidentsMessagesPage() {
   );
 }
 
-export default function MidnightInMonteCarloSite() {
+export default function ANightInMonteCarloSite() {
   return (
     <div id="top" className="min-h-screen bg-[#060606] text-white">
       <div className="fixed inset-0 -z-20 bg-[radial-gradient(circle_at_top,_rgba(212,175,55,0.16),_transparent_28%),radial-gradient(circle_at_85%_20%,_rgba(255,255,255,0.06),_transparent_18%),linear-gradient(to_bottom,#090909,#050505,#090909)]" />
@@ -309,11 +309,13 @@ export default function MidnightInMonteCarloSite() {
             <motion.div variants={stagger} initial="hidden" animate="visible" className="mx-auto max-w-5xl">
               <motion.div variants={fadeUp} transition={{ duration: 0.55 }} className="text-center">
                 <p className="text-xl font-light italic text-amber-100/90 md:text-2xl">Ontario Tech’s Luxury End-of-Year Gala</p>
-                <h1 className="mt-4 bg-gradient-to-b from-white via-amber-100 to-amber-400 bg-clip-text text-4xl font-semibold leading-[1.16] text-transparent sm:text-6xl md:text-8xl md:leading-[1.12]">
-                  <span className="block text-center sm:inline sm:text-left md:whitespace-nowrap">
-                    <span className="font-slight inline-block text-[0.9em] align-baseline sm:text-[1.1em] md:px-2 md:text-[1.16em]">Midnight</span> <span className="max-[360px]:block sm:inline">in</span>
-                  </span>{" "}
-                  Monte Carlo
+                <h1 className="mt-4 overflow-visible pb-[0.14em] text-4xl font-semibold sm:text-6xl md:pb-[0.18em] md:text-8xl">
+                  <span className="font-slight block overflow-visible bg-gradient-to-b from-white via-amber-50 to-amber-200 bg-clip-text px-2 pb-[0.2em] pt-[0.2em] text-[1.05em] leading-[1.34] text-transparent sm:text-[1.08em] md:text-[1.12em]">
+                    A Night in
+                  </span>
+                  <span className="block bg-gradient-to-b from-white via-amber-100 to-amber-400 bg-clip-text pb-[0.08em] leading-[1.06] text-transparent md:leading-[1.04]">
+                    Monte Carlo
+                  </span>
                 </h1>
                 <p className="mx-auto mt-8 max-w-3xl text-base leading-8 text-neutral-300 md:text-lg">
                   A cinematic gala experience inspired by Riviera glamour, presented by the Buisness & IT Society & Science Council, featuring a styled buffet dinner, awards,
@@ -408,7 +410,7 @@ export default function MidnightInMonteCarloSite() {
         <section id="tickets" className="border-y border-white/10 bg-white/[0.03]">
           <div className="mx-auto max-w-7xl px-6 py-20 md:px-10">
             <div className="mb-10 flex flex-col justify-between gap-4 md:flex-row md:items-end">
-              <SectionHeading eyebrow="Tickets" title="Choose the Right Ticket for Your Night." text="All ticket holders receive access to Midnight in Monte Carlo, including entry, formal programming, dining, and the gala experience." />
+              <SectionHeading eyebrow="Tickets" title="Choose the Right Ticket for Your Night." text="All ticket holders receive access to A Night in Monte Carlo, including entry, formal programming, dining, and the gala experience." />
               <a href="https://shop.otubitsoc.com" className="text-sm uppercase tracking-[0.3em] text-amber-300 hover:text-amber-200">shop.otubitsoc.com</a>
             </div>
             <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.15 }} className="grid gap-6 md:grid-cols-2 xl:grid-cols-5">
@@ -416,7 +418,7 @@ export default function MidnightInMonteCarloSite() {
                 <motion.div key={ticket.title} variants={fadeUp} transition={{ duration: 0.45 }}>
                   <Card className="group h-full rounded-[2rem] border-white/10 bg-black/40 text-white transition hover:-translate-y-1 hover:border-amber-300/30 hover:bg-black/60">
                     <CardContent className="flex h-full flex-col p-6">
-                      <p className="text-[10px] uppercase tracking-[0.35em] text-amber-200/70">Midnight in Monte Carlo</p>
+                      <p className="text-[10px] uppercase tracking-[0.35em] text-amber-200/70">A Night in Monte Carlo</p>
                       <h3 className="mt-4 text-2xl font-medium">{ticket.title}</h3>
                       <p className="mt-5 text-5xl font-semibold text-amber-300">{ticket.price}</p>
                       <p className="mt-5 flex-1 text-sm leading-7 text-neutral-300">{ticket.description}</p>

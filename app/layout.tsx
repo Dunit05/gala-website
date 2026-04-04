@@ -13,8 +13,8 @@ const playfairDisplay = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Midnight in Monte Carlo: BITSoc x SciCo Gala 2026",
-  description: "Midnight in Monte Carlo: BITSoc x SciCo Gala 2026 is a cinematic gala experience inspired by Riviera glamour, presented by the Business & IT Society & Science Council, featuring a styled buffet dinner, awards, signature drinks, photo moments, entertainment, and a polished after-dark finale.",
+  title: "A Night in Monte Carlo: BITSoc x SciCo Gala 2026",
+  description: "A Night in Monte Carlo: BITSoc x SciCo Gala 2026 is a cinematic gala experience inspired by Riviera glamour, presented by the Business & IT Society & Science Council, featuring a styled buffet dinner, awards, signature drinks, photo moments, entertainment, and a polished after-dark finale.",
   icons: {
     icon: "/icon.png",
   },
