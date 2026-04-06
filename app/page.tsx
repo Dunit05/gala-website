@@ -166,7 +166,7 @@ function AwardsVotingPage() {
   const awardCards = [
     {
       title: "BITSoc Awards",
-      text: "Cast your vote for Professor, TA, and Association of the Year in FBIT, recognizing those who have demonstrated outstanding leadership, initiative, and impact throughout the year.",
+      text: "Cast your vote & Nominate for Professor, TA, and Association of the Year in FBIT, recognizing those who have demonstrated outstanding leadership, initiative, and impact throughout the year.",
       button: "Vote for BITSoc Awards",
       links: [
         {
