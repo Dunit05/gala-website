@@ -354,7 +354,7 @@ export default function ANightInMonteCarloSite() {
                   </span>
                 </h1>
                 <p className="mx-auto mt-8 max-w-3xl text-base leading-8 text-neutral-300 md:text-lg">
-                  A cinematic gala experience inspired by Riviera glamour, presented by the Buisness & IT Society & Science Council, featuring a styled buffet dinner, awards,
+                  A cinematic gala experience inspired by Riviera glamour, presented by the Business & IT Society & Science Council, featuring a styled buffet dinner, awards,
                   signature drinks, photo moments, entertainment, and a polished after-dark finale.
                 </p>
                 <div className="mt-10 flex flex-wrap justify-center gap-4">
