@@ -122,13 +122,15 @@ const faqs = [
   },
 ];
 
-const gallery = [
-  "Ticket cover branding and launch visuals",
-  "Monte Carlo-inspired lobby styling",
-  "Luxury table design and centrepieces",
-  "Stage + awards presentation moment",
-  "Photo wall, balloons, and branded details",
-  "Dance floor finale and after-dark energy",
+const galleryPhotos = [
+  { src: "/bit_1.jpeg", alt: "BITSoc gala moment 1", label: "BITSoc" },
+  { src: "/bit_2.jpeg", alt: "BITSoc gala moment 2", label: "BITSoc" },
+  { src: "/bit_3.JPG", alt: "BITSoc gala moment 3", label: "BITSoc" },
+  { src: "/bit_4.JPG", alt: "BITSoc gala moment 4", label: "BITSoc" },
+  { src: "/sci_1.jpg", alt: "SciCo gala moment 1", label: "SciCo" },
+  { src: "/sci_2.jpg", alt: "SciCo gala moment 2", label: "SciCo" },
+  { src: "/sci_3.jpg", alt: "SciCo gala moment 3", label: "SciCo" },
+  { src: "/sci_4.jpg", alt: "SciCo gala moment 4", label: "SciCo" },
 ];
 
 function SectionHeading({ eyebrow, title, text }: { eyebrow: string; title: React.ReactNode; text?: string }) {
@@ -163,15 +165,31 @@ function InfoPill({ icon: Icon, label, value }: { icon: React.ComponentType<any>
 function AwardsVotingPage() {
   const awardCards = [
     {
-      title: "FBIT Awards",
+      title: "BITSoc Awards",
       text: "Cast your vote for the Professor & TA of the Year in FBIT who showed outstanding leadership, initiative, and impact this year.",
-      button: "Vote for FBIT Awards",
+      button: "Vote for BITSoc Awards",
+      links: [
+        {
+          label: "Vote for BITSoc Awards",
+          href: "https://docs.google.com/forms/d/e/1FAIpQLSeGf-Svw4F7qAuD8RaLM-KpBntvXp3Gi7eJ4IG5FYl6yU9kWg/viewform?usp=dialog",
+        },
+      ],
       accent: "from-amber-300/20 via-amber-100/5 to-transparent",
     },
     {
-      title: "Science Awards",
+      title: "SciCo Awards",
       text: "Recognize Science students for scholarships who made a meaningful contribution through excellence, dedication, and community involvement, along with the professor of the year.",
-      button: "Vote for Science Awards",
+      button: "Vote for SciCo Awards",
+      links: [
+        {
+          label: "Professor Award Nomination",
+          href: "https://docs.google.com/forms/d/e/1FAIpQLSdyLc0HJ15nAtsPWmiR4aXa_OC1bXbYxauJvtKt_FDBSnxs6g/viewform",
+        },
+        {
+          label: "Scholarship Award",
+          href: "https://docs.google.com/forms/d/e/1FAIpQLSfVshLGcv0Eo5QT4QnNW3GIY8HfCQhYskUb6n2vBMeZH62Llg/viewform",
+        },
+      ],
       accent: "from-sky-300/20 via-sky-100/5 to-transparent",
     },
   ];
@@ -209,13 +227,23 @@ function AwardsVotingPage() {
               </div>
               <CardContent className="flex flex-1 flex-col p-6">
                 <p className="flex-1 text-sm leading-7 text-neutral-300">{card.text}</p>
-                <Button
-                  disabled
-                  className="mt-6 cursor-not-allowed rounded-2xl bg-amber-300 text-black opacity-60 hover:bg-amber-300"
-                  title="Voting forms are not live yet"
-                >
-                  {card.button}
-                </Button>
+                {card.links?.length ? (
+                  <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                    {card.links.map((link) => (
+                      <Button key={link.href} asChild className="w-full justify-center rounded-2xl bg-amber-300 text-black hover:bg-amber-200 sm:w-auto">
+                        <a href={link.href} target="_blank" rel="noopener noreferrer">{link.label}</a>
+                      </Button>
+                    ))}
+                  </div>
+                ) : (
+                  <Button
+                    disabled
+                    className="mt-6 w-full cursor-not-allowed justify-center rounded-2xl bg-amber-300 text-black opacity-60 hover:bg-amber-300 sm:w-auto"
+                    title="Voting forms are not live yet"
+                  >
+                    {card.button}
+                  </Button>
+                )}
               </CardContent>
             </Card>
           </motion.div>
@@ -438,7 +466,15 @@ export default function ANightInMonteCarloSite() {
         </section>
 
         <section id="program" className="mx-auto max-w-7xl px-6 py-20 md:px-10">
-          <SectionHeading eyebrow="Program" title="A Run of Show Built to Keep the Night Moving." text="From arrival to final song, the evening is designed to feel seamless, elevated, and exciting without losing the party energy." />
+          <SectionHeading
+            eyebrow="Program"
+            title={
+              <>
+                A Run of Show Built to Keep the <span className="bg-gradient-to-b from-amber-100 via-amber-200 to-amber-400 bg-clip-text text-transparent">Night</span> Moving.
+              </>
+            }
+            text="From arrival to final song, the evening is designed to feel seamless, elevated, and exciting without losing the party energy."
+          />
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.45 }} className="mt-12">
             <Card className="rounded-3xl border-white/10 bg-white/5 text-white">
               <CardContent className="p-10 text-center">
@@ -522,16 +558,39 @@ export default function ANightInMonteCarloSite() {
 
         {/* <section id="gallery" className="border-y border-white/10 bg-white/[0.03]">
           <div className="mx-auto max-w-7xl px-6 py-20 md:px-10">
-            <SectionHeading eyebrow="Gallery & Inspiration" title="Visual Atmosphere, Brand Moments, and Decor Direction." text="Use this site as a live event deck replacement with room inspiration, ticket artwork, decor moments, and gala styling references." />
-            <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }} className="mt-12 grid gap-4 md:grid-cols-3">
-              {gallery.map((label, i) => (
-                <motion.div key={label} variants={fadeUp} transition={{ duration: 0.45 }}>
-                  <Card className="group relative aspect-[4/5] overflow-hidden rounded-[2rem] border-white/10 bg-black/30 text-white">
-                    <CardContent className="relative flex h-full items-end p-6">
-                      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(212,175,55,0.15),_transparent_35%)] transition duration-500 group-hover:scale-110" />
-                      <div className="relative">
-                        <p className="mb-2 text-[10px] uppercase tracking-[0.35em] text-amber-200/70">Gallery {i + 1}</p>
-                        <p className="text-2xl font-medium">{label}</p>
+            <SectionHeading
+              eyebrow="Gallery"
+              title={
+                <>
+                  Captured Moments from a <span className="bg-gradient-to-b from-amber-100 via-amber-200 to-amber-400 bg-clip-text text-transparent">Defining Year</span>.
+                </>
+              }
+              text="A preview of BITSoc and SciCo energy leading into gala night."
+            />
+            <motion.div
+              variants={stagger}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.1 }}
+              className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4"
+            >
+              {galleryPhotos.map((photo, i) => (
+                <motion.div key={photo.src} variants={fadeUp} transition={{ duration: 0.45 }}>
+                  <Card className="group overflow-hidden rounded-[1.8rem] border-white/10 bg-black/30 text-white">
+                    <CardContent className="relative p-0">
+                      <div className="relative aspect-[16/10] md:aspect-[16/9]">
+                        <Image
+                          src={photo.src}
+                          alt={photo.alt}
+                          fill
+                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                          className="object-cover transition duration-500 group-hover:scale-105"
+                        />
+                        <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_45%,rgba(0,0,0,0.72))]" />
+                        <div className="absolute inset-x-0 bottom-0 p-4">
+                          <p className="text-[10px] uppercase tracking-[0.34em] text-amber-200/80">{photo.label}</p>
+                          <p className="mt-2 text-sm text-white/90">Photo {i + 1}</p>
+                        </div>
                       </div>
                     </CardContent>
                   </Card>
