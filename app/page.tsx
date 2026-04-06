@@ -227,18 +227,22 @@ function AwardsVotingPage() {
               </div>
               <CardContent className="flex flex-1 flex-col p-6">
                 <p className="flex-1 text-sm leading-7 text-neutral-300">{card.text}</p>
-                {card.links?.length ? (
-                  <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                {card.links?.length && card.links.length > 1 ? (
+                  <div className="mt-6 flex w-full flex-col gap-3">
                     {card.links.map((link) => (
-                      <Button key={link.href} asChild className="w-full justify-center rounded-2xl bg-amber-300 text-black hover:bg-amber-200 sm:w-auto">
+                      <Button key={link.href} asChild className="w-full justify-center rounded-2xl bg-amber-300 py-6 text-black hover:bg-amber-200">
                         <a href={link.href} target="_blank" rel="noopener noreferrer">{link.label}</a>
                       </Button>
                     ))}
                   </div>
+                ) : card.links?.length === 1 ? (
+                  <Button asChild className="mx-auto mt-6 w-full max-w-xl justify-center rounded-2xl bg-amber-300 py-6 text-black hover:bg-amber-200">
+                    <a href={card.links[0].href} target="_blank" rel="noopener noreferrer">{card.links[0].label}</a>
+                  </Button>
                 ) : (
                   <Button
                     disabled
-                    className="mt-6 w-full cursor-not-allowed justify-center rounded-2xl bg-amber-300 text-black opacity-60 hover:bg-amber-300 sm:w-auto"
+                    className="mt-6 w-full cursor-not-allowed justify-center rounded-2xl bg-amber-300 py-6 text-black opacity-60 hover:bg-amber-300"
                     title="Voting forms are not live yet"
                   >
                     {card.button}
@@ -329,7 +333,7 @@ export default function ANightInMonteCarloSite() {
             <a href="#vote" className="transition hover:text-amber-200">Vote</a>
             <a href="#faq" className="transition hover:text-amber-200">FAQ</a>
           </nav>
-          <Button asChild className="rounded-3xl bg-amber-300 px-5 text-black hover:bg-amber-200">
+          <Button asChild className="rounded-xl bg-amber-300 px-8 py-6 text-base text-black hover:bg-amber-200">
             <a href="https://shop.otubitsoc.com">Buy Tickets</a>
           </Button>
         </div>
@@ -454,7 +458,7 @@ export default function ANightInMonteCarloSite() {
                       <h3 className="mt-4 text-2xl font-medium">{ticket.title}</h3>
                       <p className="mt-5 text-5xl font-semibold text-amber-300">{ticket.price}</p>
                       <p className="mt-5 flex-1 text-sm leading-7 text-neutral-300">{ticket.description}</p>
-                      <Button asChild className="mt-8 rounded-2xl bg-amber-300 text-black hover:bg-amber-200">
+                      <Button asChild className="mt-8 rounded-3xl bg-amber-300 text-black hover:bg-amber-200">
                         <a href="https://shop.otubitsoc.com">Buy Ticket</a>
                       </Button>
                     </CardContent>
