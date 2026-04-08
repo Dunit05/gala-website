@@ -53,10 +53,10 @@ const tickets = [
       "For guests and students from outside Ontario Tech.",
   },
   {
-    title: "Table Ticket (10 Seats)",
+    title: "VIP Table Ticket (10 Seats)",
     price: "$450",
     description:
-      "Reserved 10-seat table package for Ontario Tech staff and departments & external company guests.",
+      "Reserved 10-seat table seating, offering a VIP group experience at a discounted rate per ticket, perfect for friend groups, mixed guests, and those bringing external +1s. Enjoy the night together with guaranteed seating for your entire group. If you purchase this table ticket, you qualify for VIP table naming, allowing you to customize your table for the night.",
   },
 ];
 
