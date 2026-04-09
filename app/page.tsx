@@ -56,7 +56,8 @@ const tickets = [
     title: "VIP Table Ticket (10 Seats)",
     price: "$450",
     description:
-      "Reserved 10-seat table seating, offering a VIP group experience at a discounted rate per ticket, perfect for friend groups, mixed guests, and those bringing external +1s. Enjoy the night together with guaranteed seating for your entire group. If you purchase this table ticket, you qualify for VIP table naming, allowing you to customize your table for the night.",
+      "Reserved VIP 10-seat table seating, perfect for friend groups, mixed guests, and those bringing external +1s.",
+    featured: true,
   },
 ];
 
@@ -452,13 +453,31 @@ export default function ANightInMonteCarloSite() {
             <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.15 }} className="grid gap-6 md:grid-cols-2 xl:grid-cols-5">
               {tickets.map((ticket) => (
                 <motion.div key={ticket.title} variants={fadeUp} transition={{ duration: 0.45 }}>
-                  <Card className="group h-full rounded-[2rem] border-white/10 bg-black/40 text-white transition hover:-translate-y-1 hover:border-amber-300/30 hover:bg-black/60">
+                  <Card
+                    className={`group relative h-full rounded-[2rem] border transition hover:-translate-y-1 ${
+                      ticket.featured
+                        ? "border-amber-200/70 bg-gradient-to-b from-amber-200 via-amber-300 to-amber-400 text-black shadow-[0_0_0_1px_rgba(255,214,102,0.3),0_24px_45px_rgba(0,0,0,0.35)] xl:-translate-y-2"
+                        : "border-white/10 bg-black/40 text-white hover:border-amber-300/30 hover:bg-black/60"
+                    }`}
+                  >
+                    {ticket.featured ? (
+                      <span className="absolute right-5 top-5 z-10 rounded-full border border-black/20 bg-black/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.25em] text-black/80">
+                        Best Value
+                      </span>
+                    ) : null}
                     <CardContent className="flex h-full flex-col p-6">
-                      <p className="text-[10px] uppercase tracking-[0.35em] text-amber-200/70">A Night in Monte Carlo</p>
+                      <div className="flex items-start gap-3">
+                        <p className={`text-[10px] uppercase tracking-[0.35em] ${ticket.featured ? "text-black/70" : "text-amber-200/70"}`}>A Night in Monte Carlo</p>
+                      </div>
                       <h3 className="mt-4 text-2xl font-medium">{ticket.title}</h3>
-                      <p className="mt-5 text-5xl font-semibold text-amber-300">{ticket.price}</p>
-                      <p className="mt-5 flex-1 text-sm leading-7 text-neutral-300">{ticket.description}</p>
-                      <Button asChild className="mt-8 rounded-3xl bg-amber-300 text-black hover:bg-amber-200">
+                      <p className={`mt-5 text-5xl font-semibold ${ticket.featured ? "text-black" : "text-amber-300"}`}>{ticket.price}</p>
+                      <p className={`mt-5 flex-1 text-sm leading-7 ${ticket.featured ? "text-black/85" : "text-neutral-300"}`}>{ticket.description}</p>
+                      <Button
+                        asChild
+                        className={`mt-8 rounded-3xl ${
+                          ticket.featured ? "bg-black text-amber-200 hover:bg-black/90" : "bg-amber-300 text-black hover:bg-amber-200"
+                        }`}
+                      >
                         <a href="https://shop.otubitsoc.com">Buy Ticket</a>
                       </Button>
                     </CardContent>
